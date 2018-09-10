@@ -1,3 +1,5 @@
+exit 0
+
 if [[ -z "$SAGE_LOCAL" ]]; then
     echo >&2 "Error: SAGE_LOCAL undefined - exiting..."
     echo >&2 "Maybe run 'sage -sh'?"
