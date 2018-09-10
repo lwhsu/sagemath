@@ -22,7 +22,7 @@
 test -z "$SAGE_ROOT" || cd "$SAGE_ROOT"
 
 PKG=build/pkgs/configure
-MAKE="${MAKE:-make}"
+MAKE="${MAKE:-gmake}"
 CONFVERSION=`cat $PKG/package-version.txt`
 
 
