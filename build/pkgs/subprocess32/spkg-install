@@ -6,6 +6,6 @@ fi
 cd src
 
 # See fix_config.py for an explanation
-python2 ../fix_config.py || exit $?
+# python2 ../fix_config.py || exit $?
 
 sdh_pip_install .
