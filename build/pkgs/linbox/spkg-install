@@ -7,7 +7,9 @@ cd src/
 # Some systems have problems when parts of LinBox are compiled with
 # the commentator enabled and other parts with the commentator
 # disabled.  Therefore, disable it always.
-export CPPFLAGS="$CPPFLAGS -DDISABLE_COMMENTATOR"
+export CPPFLAGS="$CPPFLAGS -I/usr/local/include -DDISABLE_COMMENTATOR"
+export CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+export LDFLAGS="$LDFLAGS -L/usr/local/lib"
 
 ###############################################################################
 # Configure, build and install LinBox:
@@ -22,6 +24,7 @@ fi
 # This is harmless as no functionality using fplll is exposed in Sage.
 # See trac ticket #21221.
 LINBOX_CONFIGURE="--without-fplll $LINBOX_CONFIGURE"
+LINBOX_CONFIGURE="--with-ocl=/usr/local $LINBOX_CONFIGURE"
 
 # Need to use 'bash' for configure, see
 # https://trac.sagemath.org/ticket/23451
