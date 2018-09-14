@@ -12,6 +12,9 @@ unset GREP_OPTIONS
 # The --with-readline configure option only understands yes/no
 # and cannot be used to pass this path.
 CPPFLAGS="$CPPFLAGS"
+LDFLAGS="$LDFLAGS -L/usr/local/lib"
+CFLAGS="$CFLAGS -I/usr/local/include"
+CPPFLAGS="$CPPFLAGS -I/usr/local/include"
 
 # Optimization flags
 if [ "$SAGE_DEBUG" = yes ]; then
