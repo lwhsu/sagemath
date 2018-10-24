@@ -451,6 +451,24 @@ class ProjectiveSpace_ring(AmbientSpace):
         """
         return not (self == other)
 
+    def __hash__(self):
+        """
+        Return the hash of ``self``.
+
+        EXAMPLES::
+
+            sage: hash(ProjectiveSpace(QQ, 3, 'a')) == hash(ProjectiveSpace(ZZ, 3, 'a'))
+            False
+            sage: hash(ProjectiveSpace(ZZ, 1, 'a')) == hash(ProjectiveSpace(ZZ, 0, 'a'))
+            False
+            sage: hash(ProjectiveSpace(ZZ, 2, 'a')) == hash(AffineSpace(ZZ, 2, 'a'))
+            False
+            sage: P = ProjectiveSpace(ZZ, 1, 'x')
+            sage: hash(loads(P.dumps())) == hash(P)
+            True
+        """
+        return hash((self.dimension_relative(), self.coordinate_ring()))
+
     def __pow__(self, m):
         """
         Return the Cartesian power of this space.
@@ -597,7 +615,7 @@ class ProjectiveSpace_ring(AmbientSpace):
             [0]
             [0]
 
-        If the multiplicity `m` is 0, then the a matrix with zero rows
+        If the multiplicity `m` is 0, then a matrix with zero rows
         is returned::
 
             sage: P = ProjectiveSpace(GF(5), 2, names='x')

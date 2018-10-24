@@ -941,6 +941,7 @@ import collections
 import itertools
 
 import sage
+from sage.misc.sageinspect import sage_getargspec
 
 
 def full_group_by(l, key=lambda x: x):
@@ -11691,8 +11692,7 @@ class Automaton(FiniteStateMachine):
         EXAMPLES::
 
             sage: A = automata.Word([0, 1])
-            sage: [w for w in
-            ....:  [], [0], [1], [0, 0], [0, 1], [1, 0], [1, 1]
+            sage: [w for w in ([], [0], [1], [0, 0], [0, 1], [1, 0], [1, 1])
             ....:  if A(w)]
             [[0, 1]]
             sage: Ac = A.complement()
@@ -11705,8 +11705,7 @@ class Automaton(FiniteStateMachine):
              Transition from 1 to 3: 0|-,
              Transition from 3 to 3: 0|-,
              Transition from 3 to 3: 1|-]
-            sage: [w for w in
-            ....:  [], [0], [1], [0, 0], [0, 1], [1, 0], [1, 1]
+            sage: [w for w in ([], [0], [1], [0, 0], [0, 1], [1, 0], [1, 1])
             ....:  if Ac(w)]
             [[], [0], [1], [0, 0], [1, 0], [1, 1]]
 
@@ -11718,8 +11717,7 @@ class Automaton(FiniteStateMachine):
             ...
             ValueError: The finite state machine must be deterministic.
             sage: Ac = A.determinisation().complement()
-            sage: [w for w in
-            ....:  [], [0], [1], [0, 0], [0, 1], [1, 0], [1, 1]
+            sage: [w for w in ([], [0], [1], [0, 0], [0, 1], [1, 0], [1, 1])
             ....:  if Ac(w)]
             [[], [0], [1], [0, 0], [1, 0], [1, 1]]
         """
@@ -13704,8 +13702,8 @@ class _FSMTapeCache_(sage.structure.sage_object.SageObject):
         it_word = iter(word)
 
         # check letters in cache
-        if any(letter_on_track != next(it_word)
-               for letter_on_track in track_cache):
+        if any(letter_on_track != letter_in_word
+               for letter_on_track, letter_in_word in zip(track_cache, it_word)):
             return False
 
         # check letters not already cached
@@ -14822,8 +14820,7 @@ class FSMProcessIterator(sage.structure.sage_object.SageObject,
             next_transitions = None
             state_said_finished = False
             if hasattr(current_state, 'hook'):
-                import inspect
-                if len(inspect.getargspec(current_state.hook).args) == 2:
+                if len(sage_getargspec(current_state.hook).args) == 2:
                     from sage.misc.superseded import deprecation
                     deprecation(16538, 'The hook of state %s cannot be '
                                 'processed: It seems that you are using an '
