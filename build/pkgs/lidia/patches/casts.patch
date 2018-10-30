@@ -1,0 +1,39 @@
+diff --git a/src/base/factorization/bigint/sf_mpqs.cc b/src/base/factorization/bigint/sf_mpqs.cc
+index c6e89e9..383b17f 100644
+--- a/src/base/factorization/bigint/sf_mpqs.cc
++++ b/src/base/factorization/bigint/sf_mpqs.cc
+@@ -507,7 +507,7 @@ namespace LiDIA {
+                   }
+                 }
+                       
+-                if(faktor[0] == (char) NULL) {
++                if(faktor[0] == (char)(size_t) NULL) {
+                   continue;
+                 }
+               }
+diff --git a/src/base/simple_classes/factorization/mpqs.cc b/src/base/simple_classes/factorization/mpqs.cc
+index ebe7c9a..6b494a5 100644
+--- a/src/base/simple_classes/factorization/mpqs.cc
++++ b/src/base/simple_classes/factorization/mpqs.cc
+@@ -515,7 +515,7 @@ static void zusam (unsigned int size_exp, int * FB, const bigint & kN)
+ 			    }
+ 			}
+ 		      
+-		      if (faktor[0] == (char) NULL)
++		      if (faktor[0] == (char)(size_t) NULL)
+ 			continue;
+ 		    }
+ 		  
+diff --git a/src/finite_fields/gf2n/gf2nin.cc b/src/finite_fields/gf2n/gf2nin.cc
+index a0a5a2f..a241547 100644
+--- a/src/finite_fields/gf2n/gf2nin.cc
++++ b/src/finite_fields/gf2n/gf2nin.cc
+@@ -80,7 +80,7 @@ std::istream & operator >> (std::istream & in_strm, gf2n & a)
+ 	}
+ 	else {
+ 		str = line+i+1;
+-		line[i] = (char) NULL;
++		line[i] = (char)(size_t) NULL;
+ 
+ 		if (strcmp(line, "HEX") == 0) {
+ 			hexin(a, str);
