@@ -5,7 +5,7 @@ rm "$SAGE_LOCAL"/lib/libgd.*
 
 cd src
 
-export CFLAGS="-g $CFLAGS"
+export CFLAGS="-g -fPIC $CFLAGS"
 
 # We explicitly disable X and fontconfig support, since (1) X is not a SAGE dependency,
 # and (2) the gd build fails on a lot of OS X PPC machines when X is enabled.
