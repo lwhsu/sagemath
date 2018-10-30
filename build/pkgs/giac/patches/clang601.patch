@@ -1,0 +1,53 @@
+diff --git a/src/cocoa.cc b/src/cocoa.cc
+index 1018d2b..3473fab 100755
+--- a/src/cocoa.cc
++++ b/src/cocoa.cc
+@@ -3891,7 +3891,7 @@ namespace giac {
+       q[i].coord.push_back(T_unsigned<modint,tdeg_t>(c,monom));
+       // push in heap
+       if (g[G[i]].coord.size()>1){
+-	heap_t<tdeg_t> current={i,int(q[i].coord.size())-1,1,g[G[i]].coord[1].u+monom};
++	heap_t<tdeg_t> current={i,static_cast<unsigned int>(int(q[i].coord.size())-1),1,g[G[i]].coord[1].u+monom};
+ 	H.push_back(current);
+ 	push_heap(H.begin(),H.end(),key);
+       }
+@@ -3996,7 +3996,7 @@ namespace giac {
+       q[i].coord.push_back(T_unsigned<modint,tdeg_t>(1,monom));
+       // push in heap
+       if (g[G[i]].coord.size()>1){
+-	heap_t<tdeg_t> current={i,int(q[i].coord.size())-1,1,g[G[i]].coord[1].u+monom};
++	heap_t<tdeg_t> current={i,static_cast<unsigned int>(int(q[i].coord.size())-1),1,g[G[i]].coord[1].u+monom};
+ 	H.push_back(unsigned(H_.size()));
+ 	H_.push_back(current);
+ 	keyheap.ptr=&H_.front();
+@@ -10793,7 +10793,7 @@ namespace giac {
+ 	}
+ 	heap_t<tdeg_t> current = { i, unsigned(q[i].size()) - 1, pos, newmonom };
+ #else
+-	heap_t<tdeg_t> current = { i, unsigned(q[i].size()) - 1, pos, (*gGi.expo)[gGi.coord[pos].u] + monom };
++	heap_t<tdeg_t> current = { i, unsigned(q[i].size()) - 1, static_cast<unsigned int>(pos), (*gGi.expo)[gGi.coord[pos].u] + monom };
+ #endif
+ 	H.push_back(hashgcd_U(H_.size()));
+ 	H_.push_back(current);
+@@ -11779,7 +11779,7 @@ namespace giac {
+       int colonnes=N,debut=0,step=Bs/(th+1)+1,fin;
+       for (int j=0;j<=th;debut+=step,++j){
+ 	fin=giacmin(debut+step,Bs);
+-	thread_buchberger_t<tdeg_t> tmp={&res,&K,&B,&permuB,&leftshift,&rightshift,&R,Rhashptr,&Rdegpos,env,debut,fin,N,Kcols,&firstpos,&Mindex,&Mcoeff,&coeffindex,&indexes,&used,bitmap,j==th && debug_infolevel>1};
++	thread_buchberger_t<tdeg_t> tmp={&res,&K,&B,&permuB,&leftshift,&rightshift,&R,Rhashptr,&Rdegpos,env,debut,fin,static_cast<int>(N),static_cast<int>(Kcols),&firstpos,&Mindex,&Mcoeff,&coeffindex,&indexes,&used,bitmap,j==th && debug_infolevel>1};
+ 	buchberger_param[j]=tmp;
+ 	bool res=true;
+ 	// CERR << "write " << j << " " << p << endl;
+diff --git a/src/solve.cc b/src/solve.cc
+index 9ba0083..ba8870b 100755
+--- a/src/solve.cc
++++ b/src/solve.cc
+@@ -5808,7 +5808,7 @@ namespace giac {
+ #endif
+ 	 res.front().dim<=GROEBNER_VARS+1-(order!=_PLEX_ORDER)){
+       vectpoly tmp;
+-      order_t order_={static_cast<short>(order),lexvars};
++      order_t order_={static_cast<short>(order),static_cast<unsigned char>(lexvars)};
+       if (!gbasis8(res,order_,tmp,env,modularcheck!=0,modularcheck>=2,rur,contextptr,eliminate_flag))
+ 	return false;
+       int i;

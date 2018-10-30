@@ -1,0 +1,12 @@
+diff --git a/src/misc.h b/src/misc.h
+index a62e8e8..59bddd0 100644
+--- a/src/misc.h
++++ b/src/misc.h
+@@ -23,6 +23,7 @@
+ #include "gen.h"
+ #include "unary.h"
+ #include "symbolic.h"
++#include <sys/time.h>
+ 
+ #ifndef NO_NAMESPACE_GIAC
+ namespace giac {

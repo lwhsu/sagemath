@@ -44,6 +44,7 @@ if [ "$UNAME" = "Darwin" ]; then
     DISABLENLS="--disable-nls"
 fi
 
+export LDFLAGS="$LDFLAGS -L/usr/local/lib -lintl -R/usr/local/lib"
 sdh_configure --disable-gui --disable-ao --disable-lapack "$DISABLENLS"
 
 #############################################################
@@ -73,5 +74,4 @@ rm -rf ${SAGE_LOCAL}/include/giac
 #############################################################
 #   Install
 #############################################################
-
 sdh_make_install
