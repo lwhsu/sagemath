@@ -1,0 +1,20 @@
+-fPIC is needed by bzip2, and by libgd
+
+CXXFLAGS and LDFLAGS need to have /usr/local for giac's use of libintl
+(i.e. LDFLAGS="-L/usr/local/lib" CXXFLAGS="-I/usr/local/include"
+
+CXXFLAGS must not be empty for flint (some bug there)
+
+careful with setting CFLAGS to "-I/usr/local/include" - this breaks ecm build
+(it pulls in the wrong GMP header then)
+-----------------------
+
+flang - specific (in particular needed for openblas and scipy (I guess numpy etc. too))
+
+./configure FC=flang
+
+FFLAGS="-I/usr/local/flang/include"
+LDFLAGS="$LDFLAGS -lexecinfo -lm"
+
+one needs to create a fake libgfortran.so, to let scipy link against it without an error;
+e.g. make a link  $SAGE_LOCAL/lib/libgfortran.so pointing to system's libm.so

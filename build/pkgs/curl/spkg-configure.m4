@@ -10,6 +10,6 @@ SAGE_SPKG_CONFIGURE([curl], [
     # If (lib)curl is installed, we need to check for the curl header
     # file, too.
     AS_IF([test $sage_spkg_install_curl = no], [
-        AC_CHECK_HEADER([curl/curl.h], [], [sage_spkg_install_curl=yes])
+        AC_CHECK_HEADERS([curl/curl.h], [], [sage_spkg_install_curl=yes])
     ])
 ])

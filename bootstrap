@@ -24,7 +24,7 @@ cd "$SAGE_ROOT"
 export PATH="$SAGE_ROOT/build/bin:$PATH"
 
 PKG=build/pkgs/configure
-MAKE="${MAKE:-make}"
+MAKE="${MAKE:-gmake}"
 CONFVERSION=`cat $PKG/package-version.txt`
 
 
