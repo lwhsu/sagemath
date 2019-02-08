@@ -156,7 +156,6 @@ sagelib: \
 		$(inst_mpc) \
 		$(inst_mpfi) \
 		$(inst_mpfr) \
-		$(MP_LIBRARY) \
 		$(inst_ntl) \
 		$(inst_numpy) \
 		$(inst_pari) \
