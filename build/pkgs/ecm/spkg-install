@@ -221,7 +221,7 @@ if [ -z "$ECM_CONFIGURE" ]; then
 fi
 echo
 
-sdh_configure --with-gmp="$SAGE_LOCAL" $ECM_CONFIGURE
+sdh_configure --with-gmp="/usr/local" $ECM_CONFIGURE
 
 ###############################################################################
 # Now build ECM:
