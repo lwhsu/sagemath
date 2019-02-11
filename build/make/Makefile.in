@@ -31,9 +31,9 @@ INST = $(SAGE_SPKG_INST)
 
 # Aliases for optional packages selected at configure time
 TOOLCHAIN = @SAGE_TOOLCHAIN@
-PYTHON = python@SAGE_PYTHON_VERSION@
-MP_LIBRARY = @SAGE_MP_LIBRARY@
-BLAS = @SAGE_BLAS@
+PYTHON = $(inst_python@SAGE_PYTHON_VERSION@)
+MP_LIBRARY = $(inst_@SAGE_MP_LIBRARY@)
+BLAS = $(inst_@SAGE_BLAS@)
 
 # Files to track installation of packages
 BUILT_PACKAGES = @SAGE_BUILT_PACKAGES@
