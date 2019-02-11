@@ -115,7 +115,7 @@ $(STARTED): $(STANDARD_PACKAGE_INSTS)
 #
 # This consists of packages which are required for the Sage build system.
 ###############################################################################
-base: $(inst_patch) $(inst_pkgconf)
+base: $(inst_pkgconf)
 
 ###############################################################################
 # Building normal packages
@@ -156,6 +156,7 @@ sagelib: \
 		$(inst_mpc) \
 		$(inst_mpfi) \
 		$(inst_mpfr) \
+		$(MP_LIBRARY) \
 		$(inst_ntl) \
 		$(inst_numpy) \
 		$(inst_pari) \
@@ -165,8 +166,7 @@ sagelib: \
 		$(inst_ppl) \
 		$(inst_pycygwin) \
 		$(inst_pynac) \
-		$(inst_python2) \
-		$(inst_python3) \
+		$(PYTHON) \
 		$(inst_ratpoints) \
 		$(inst_readline) \
 		$(inst_rw) \
