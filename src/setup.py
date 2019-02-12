@@ -621,25 +621,6 @@ class sage_build_ext(build_ext):
         # current Sage library directory (if it doesn't already match that),
         # and issue a warning message:
 
-        if True or sys.platform[:6]=="darwin":
-
-            sage_libdir = os.path.realpath(SAGE_LOCAL+"/lib")
-            ldso_cmd = self.compiler.linker_so # a list of strings, like argv
-
-            for i in range(1, len(ldso_cmd)):
-
-                if ldso_cmd[i][:2] == "-L":
-                    libdir = os.path.realpath(ldso_cmd[i][2:])
-                    self.debug_print(
-                      "Library dir found in dynamic linker command: " +
-                      "\"%s\"" % libdir)
-                    if libdir != sage_libdir:
-                        self.compiler.warn(
-                          "Replacing library search directory in linker " +
-                          "command:\n  \"%s\" -> \"%s\"\n" % (libdir,
-                                                              sage_libdir))
-                        ldso_cmd[i] = "-L"+sage_libdir
-
         if DEBUG:
             print("self.compiler.linker_so (after fixing library dirs):")
             print(self.compiler.linker_so)
