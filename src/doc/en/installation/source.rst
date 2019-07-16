@@ -238,7 +238,7 @@ your OS, cf. the growing list of such packages on :trac:`27330`, install::
 
      # debian / ubuntu
      $ sudo apt-get install libntl-dev libmpfr-dev libmpc-dev libflint-dev \
-       libpcre3-dev libgd-dev \
+       libpcre3-dev libgd-dev libsymmetrica2-dev \
        cmake libterm-readline-gnu-perl ninja-build librw-dev # not for standard Sage spkgs
 
      # redhat / fedora / centos
