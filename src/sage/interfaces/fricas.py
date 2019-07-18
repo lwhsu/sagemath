@@ -365,7 +365,7 @@ http://fricas.sourceforge.net.
 
             sage: import psutil                                                 # optional - fricas
             sage: p = fricas.pid(); pr = psutil.Process(p); pr                  # optional - fricas
-            <psutil.Process(pid=..., name='AXIOMsys') at ...>
+            ...psutil.Process(pid=..., name='AXIOMsys')...
             sage: pr.children()                                                 # optional - fricas
             []
         """
