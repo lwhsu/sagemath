@@ -10,7 +10,7 @@ unset PYTHONPATH
 # Prevent use of the system hg and svn as it might make the installation fail
 export HAS_HG=no
 export SVNVERSION=no
-
+export LDFLAGS="$LDFLAGS -lexpat" # probably only needed for Python2
 cd src
 
 # Running 'make install' in parallel is a bad idea, so we use
