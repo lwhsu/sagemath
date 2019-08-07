@@ -182,7 +182,9 @@ var('CREMONA_LARGE_DATA_DIR',        join(SAGE_SHARE, 'cremona'))
 var('JMOL_DIR',                      join(SAGE_SHARE, 'jmol'))
 var('JSMOL_DIR',                     join(SAGE_SHARE, 'jsmol'))
 var('MATHJAX_DIR',                   join(SAGE_SHARE, 'mathjax'))
+var('MTXLIB',                        join(SAGE_SHARE, 'meataxe'))
 var('THREEJS_DIR',                   join(SAGE_SHARE, 'threejs'))
+var('SINGULARPATH',                  join(SAGE_SHARE, 'singular'))
 var('PPLPY_DOCS',                    join(SAGE_SHARE, 'doc', 'pplpy'))
 var('MAXIMA_FAS')
 
@@ -406,6 +408,5 @@ def cython_aliases():
     # This is not a problem in practice since LinBox depends on
     # fflas-ffpack and fflas-ffpack does add such a C++11 flag.
     aliases["LINBOX_CFLAGS"].append("-std=gnu++11")
-    aliases["ARB_LIBRARY"] = os.environ['SAGE_ARB_LIBRARY']
-
+    aliases["ARB_LIBRARY"] = os.environ.get('SAGE_ARB_LIBRARY', 'arb')
     return aliases
